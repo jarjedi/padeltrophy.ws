@@ -1,0 +1,13 @@
+###############
+# DEV PROFILE #
+###############
+server:
+  port: 8081
+spring:
+  profiles: dev
+  data:
+    rest:
+      base-path: /api
+    mongodb:
+      host: localhost
+      port: 27017

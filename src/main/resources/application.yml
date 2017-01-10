@@ -1,0 +1,53 @@
+info:
+  description: Padeltrophy Service
+  version: 1.0
+management:
+  security:
+    enabled: false
+  context-path: /manage
+  health:
+    diskspace:
+      enabled: true # Enable disk space health check
+      path: / # Path used to compute the available disk space
+      threshold: 0 # Minimum disk space that should be available, in bytes
+    jms:
+      enabled: false # Enable JMS health check
+    mail:
+      enabled: false # Enable Mail health check
+    mongo:
+      enabled: true # Enable MongoDB health check
+    rabbit:
+      enabled: false # Enable RabbitMQ health check
+    redis:
+      enabled: false # Enable Redis health check
+    solr:
+      enabled: false # Enable Solr health check
+    status:
+      order: DOWN, OUT_OF_SERVICE, UNKNOWN, UP # Comma-separated list of health statuses in order of severity
+logging:
+  config: classpath:logback-spring.xml
+  file: ./padeltrophy.log
+health:
+  config:
+    enabled: false
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+security:
+  ignored: "/**"
+endpoints:
+  enabled: true
+  env:
+    enabled: true
+  health:
+    enabled: true
+    sensitive: false
+padeltrophy:
+  s3:
+    encoding: UTF-8
+    cache:
+      maxage: 3600
+    bucket: padelchart
+    url: http://s3-eu-west-1.amazonaws.com
+
