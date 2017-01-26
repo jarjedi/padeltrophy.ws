@@ -13,6 +13,6 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "player", path = "player")
 public interface PlayerRestRepository extends MongoRepository<Player, String> {
 
-    List<Player> findByName(@Param("name") String name);
+    List<Player> findByEmail(@Param("email") String email);
 
 }
