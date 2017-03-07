@@ -17,11 +17,11 @@ public class Club {
 	private ObjectId id;
 	private String name;
 	private String telephone;
-	private ArrayList<String> gallery;
 	Location location;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm")
 	private Date createdAt;
 	private String logoUrl;
+	private String website;
 	private boolean approved;
 	private int indoorCourts;
 	private int outdoorCourts;
@@ -50,14 +50,6 @@ public class Club {
 		this.telephone = telephone;
 	}
 
-	public ArrayList<String> getGallery() {
-		return gallery;
-	}
-
-	public void setGallery(ArrayList<String> gallery) {
-		this.gallery = gallery;
-	}
-
 	public Location getLocation() {
 		return location;
 	}
@@ -80,6 +72,14 @@ public class Club {
 
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
 	}
 
 	public boolean isApproved() {
