@@ -21,8 +21,6 @@ public class Player implements Serializable{
 	@Id
 	private ObjectId id;
 	private String name;
-	private String firstName;
-	private String lastName;
 	private String genre;
 	private String province;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
@@ -33,8 +31,6 @@ public class Player implements Serializable{
 	private String level;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm")
 	private Date signupDate;
-	@DBRef(lazy=false)
-	private ArrayList<PlayerScore> scoreList;
 	private Location lastLocation;
 
 	@JsonSerialize(using=ObjectIdJsonSerializer.class)
@@ -52,22 +48,6 @@ public class Player implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public String getGenre() {
@@ -132,14 +112,6 @@ public class Player implements Serializable{
 
 	public void setSignupDate(Date signupDate) {
 		this.signupDate = signupDate;
-	}
-
-	public ArrayList<PlayerScore> getScoreList() {
-		return scoreList;
-	}
-
-	public void setScoreList(ArrayList<PlayerScore> scoreList) {
-		this.scoreList = scoreList;
 	}
 
 	public Location getLastLocation() {

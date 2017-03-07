@@ -22,6 +22,7 @@ public class Tournament {
 	@Id
     private ObjectId id;
 	private String name;
+	private String province;
 	@DBRef(lazy=false)
 	private Club location;
 	@DBRef(lazy=true)
@@ -52,6 +53,12 @@ public class Tournament {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getProvince() {
+		return this.province;
 	}
 	public Club getLocation() {
 		return location;
