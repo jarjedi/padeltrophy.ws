@@ -36,12 +36,13 @@ public class Tournament {
 	private Date dateTo;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
 	private Date registrationDateFrom;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
 	private Date registrationDateTo;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
 	private Date createdAt;
 	private ArrayList<Category> categories;
-	
+
+	@JsonSerialize(using=ObjectIdJsonSerializer.class)
 	public ObjectId getId() {
 		return id;
 	}

@@ -9,7 +9,9 @@ import com.padeltrophy.util.json.ObjectIdJsonSerializer;
 import org.bson.types.ObjectId;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -30,7 +32,11 @@ public class Player implements Serializable{
 	private String avatarUrl;
 	private String level;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm")
+	@CreatedDate
 	private Date signupDate;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm")
+	@LastModifiedDate
+	private Date lastModifiedDate;
 	private Location lastLocation;
 
 	@JsonSerialize(using=ObjectIdJsonSerializer.class)
@@ -114,6 +120,14 @@ public class Player implements Serializable{
 		this.signupDate = signupDate;
 	}
 
+	public Date getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+
+	public void setLastModifiedDate(Date lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
+	}
+
 	public Location getLastLocation() {
 		return lastLocation;
 	}
@@ -121,4 +135,5 @@ public class Player implements Serializable{
 	public void setLastLocation(Location lastLocation) {
 		this.lastLocation = lastLocation;
 	}
+
 }
