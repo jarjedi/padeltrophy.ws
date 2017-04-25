@@ -1,8 +1,5 @@
 package com.padeltrophy.entity;
 
-/**
- * Created by JLRB002 on 17/11/2015.
- */
 public class Category {
 
     private static String CATEGORY_DESC_1 = "Profesional";

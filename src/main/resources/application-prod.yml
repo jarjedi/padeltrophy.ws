@@ -1,0 +1,15 @@
+###############
+# PROD PROFILE #
+###############
+spring:
+  profiles: prod
+  data:
+    rest:
+      base-path: /api
+    mongodb:
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
+      database: ${MONGO_DATABASE}
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
+

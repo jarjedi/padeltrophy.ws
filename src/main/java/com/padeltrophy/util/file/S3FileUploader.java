@@ -2,6 +2,7 @@ package com.padeltrophy.util.file;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -19,9 +20,6 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by JLRB002 on 25/09/2015.
- */
 @Component
 public class S3FileUploader implements FileUploader{
 
@@ -37,20 +35,20 @@ public class S3FileUploader implements FileUploader{
     /**
      * Configuracion de cacheo de objetos
      */
-    private static final String MAX_AGE_PROP = "MAX_AGE";
     @Value("${padeltrophy.s3.cache.maxage}")
     private String cacheControl=null;
 
-    /**
-     * Nombre del bucket donde se alojan los objetos
-     */
-    private static final String BUCKET_NAME_PROP = "BUCKET";
     @Value("${padeltrophy.s3.bucket}")
     private String bucketName=null;
 
-    private static final String URL_PROP = "URL";
     @Value("${padeltrophy.s3.url}")
     private String URL;
+
+    @Value("${padeltrophy.s3.accesskey}")
+    private String accessKey;
+
+    @Value("${padeltrophy.s3.passKey}")
+    private String secretKey;
 
     public String getUniqueGeneratedName(){
         Date dNow = new Date();
@@ -85,14 +83,14 @@ public class S3FileUploader implements FileUploader{
             cl.setProtocol(Protocol.HTTP);
             tracer.trace(".getConectionS3(): Cliente configurado, procedemos a conectar...");
             try{
-                InputStream credentials= S3FileUploader.class.getResourceAsStream("/aws/awsCredentials.properties");
-                PropertiesCredentials propertiesCredentials =  new PropertiesCredentials(credentials);
-                tracer.trace(".getConectionS3(): AWS Access Key: "+propertiesCredentials.getAWSAccessKeyId());
-                tracer.trace(".getConectionS3(): AWS Secret Key: "+propertiesCredentials.getAWSSecretKey());
-                AmazonS3 s3 = new AmazonS3Client(propertiesCredentials,cl);
+                tracer.trace(".getConectionS3(): AWS bucket:"+bucketName);
+                BasicAWSCredentials awsCreds = new BasicAWSCredentials(
+                        accessKey,
+                        secretKey);
+                AmazonS3 s3 = new AmazonS3Client(awsCreds,cl);
                 tracer.trace(".getConectionS3(): Conexion establecida");
                 return s3;
-            }catch(IOException e){
+            }catch(Exception e){
                 tracer.trace(".getConectionS3(): Error al conectar:> " + e);
                 throw e;
             }

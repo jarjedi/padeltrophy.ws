@@ -24,9 +24,6 @@ management:
       enabled: false # Enable Solr health check
     status:
       order: DOWN, OUT_OF_SERVICE, UNKNOWN, UP # Comma-separated list of health statuses in order of severity
-logging:
-  config: classpath:logback-spring.xml
-  file: ./padeltrophy.log
 health:
   config:
     enabled: false
@@ -43,11 +40,17 @@ endpoints:
   health:
     enabled: true
     sensitive: false
+logging:
+  level:
+    com.padeltrophy: DEBUG
+    org.springframework.web : INFO
+  file: ./padeltrophy.log
 padeltrophy:
   s3:
     encoding: UTF-8
     cache:
       maxage: 3600
-    bucket: padelchart
+    bucket: ${S3_BUCKET}
     url: http://s3-eu-west-1.amazonaws.com
-
+    accesskey: ${S3_ACCESS_KEY}
+    passKey: ${S3_SECRET_KEY}

@@ -12,9 +12,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 
-/**
- * Created by JLRB002 on 25/09/2015.
- */
 public class FileUtil {
 
     private Tracer tracer = new Tracer(FileUtil.class.getName());

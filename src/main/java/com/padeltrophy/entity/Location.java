@@ -1,8 +1,5 @@
 package com.padeltrophy.entity;
 
-/**
- * Created by JLRB002 on 05/11/2015.
- */
 public class Location {
 
     private String province;

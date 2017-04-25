@@ -86,7 +86,6 @@ atlassian-ide-plugin.xml
 # Sensitive props
 #######################
 *awsCredentials.properties
-*application-prod.yml
 
 #######################
 # logs

@@ -16,10 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.Iterator;
 
-/**
- * Created by JLRB002 on 25/09/2015.
- */
-
 @RestController
 public class UploadFileController {
 
