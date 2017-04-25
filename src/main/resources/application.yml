@@ -42,8 +42,10 @@ endpoints:
     sensitive: false
 logging:
   level:
-    com.padeltrophy: DEBUG
-    org.springframework.web : INFO
+    com.padeltrophy: INFO
+    org.springframework.web: INFO
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+    org.springframework.data.document.mongodb: DEBUG
   file: ./padeltrophy.log
 padeltrophy:
   s3:
