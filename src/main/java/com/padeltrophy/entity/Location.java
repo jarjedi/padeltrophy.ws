@@ -2,10 +2,19 @@ package com.padeltrophy.entity;
 
 public class Location {
 
+    private String country;
     private String province;
     private String latitude;
     private String longitude;
     private String address;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     public String getProvince() {
         return province;

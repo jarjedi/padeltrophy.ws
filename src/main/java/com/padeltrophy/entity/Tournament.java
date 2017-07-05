@@ -1,20 +1,15 @@
 package com.padeltrophy.entity;
 
-import java.util.ArrayList;
-import java.util.Date;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.padeltrophy.util.json.ObjectIdJsonSerializer;
-import com.padeltrophy.util.json.TournamentLocationDeserializer;
-import com.padeltrophy.util.json.TournamentOrganizerDeserializer;
-import com.padeltrophy.util.json.TournamentOrganizerSerializer;
-import org.bson.types.ObjectId;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.padeltrophy.util.json.ObjectIdJsonSerializer;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 @Document
 public class Tournament {
@@ -23,12 +18,14 @@ public class Tournament {
     private ObjectId id;
 	private String name;
 	private String province;
-	@DBRef(lazy=false)
+	@DBRef
 	private Club location;
 	@DBRef(lazy=true)
 	private Player organizer;
 	private String telephone;
 	private String billboardUrl;
+	private String email;
+	private String url;
 	private boolean approved;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
 	private Date dateFrom;
@@ -88,6 +85,23 @@ public class Tournament {
 	public void setBillboardUrl(String billboardUrl) {
 		this.billboardUrl = billboardUrl;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public boolean isApproved() {
 		return approved;
 	}
