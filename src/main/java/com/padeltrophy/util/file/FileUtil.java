@@ -3,7 +3,6 @@ package com.padeltrophy.util.file;
 
 import com.padeltrophy.util.log.Tracer;
 import org.imgscalr.Scalr;
-import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -21,7 +20,7 @@ public class FileUtil {
         return "tmp_"+now.getTime();
     }
 
-    public File scaleImage(File originalImageFile) {
+    public File     scaleImage(File originalImageFile) {
         tracer.trace("scaleImage :> originalImageFile: "+originalImageFile.getPath()+" / "+originalImageFile.getAbsolutePath());
         FileOutputStream fos = null;
         Integer targetWidth = 300;
