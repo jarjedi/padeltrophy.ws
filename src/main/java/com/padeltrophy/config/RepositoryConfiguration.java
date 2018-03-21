@@ -21,5 +21,6 @@ public class RepositoryConfiguration extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(Player.class);
         config.exposeIdsFor(Tournament.class);
         config.exposeIdsFor(Club.class);
+        config.setMaxPageSize(5000);
     }
 }
