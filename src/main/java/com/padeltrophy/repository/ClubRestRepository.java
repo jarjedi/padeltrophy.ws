@@ -17,6 +17,6 @@ public interface ClubRestRepository extends MongoRepository<Club, String> {
     List<Club> findByName(@Param("name") String name);
 
     @Query(value="{ 'location.country' : ?0, 'location.province' : ?1 }")
-    List<Club> findByCountryProvince(String country, String province);
+    List<Club> findByCountryProvince(@Param("country") String country, @Param("province") String province);
 
 }
